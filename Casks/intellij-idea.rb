@@ -1,6 +1,6 @@
-cask :v1 => 'intellij-idea' do
-  version '15.0.1'
-  sha256 'b253782bf1a10763c4fd84bffce0e28d855da8eb6499a91647860cb443695fdd'
+cask 'intellij-idea' do
+  version '15.0.3'
+  sha256 '22f8d63d9c332bc3f60c1316da3a0c70218b2508619713cb7268ff7286baf92b'
 
   url "https://download.jetbrains.com/idea/ideaIU-#{version}-custom-jdk-bundled.dmg"
   name 'IntelliJ IDEA'
@@ -9,9 +9,12 @@ cask :v1 => 'intellij-idea' do
 
   app 'IntelliJ IDEA 15.app'
 
-  zap :delete => [
-                  '~/Library/Application Support/IntelliJIdea15',
-                  '~/Library/Preferences/IntelliJIdea15',
-                  '~/Library/Preferences/com.jetbrains.intellij.plist',
-                 ]
+  zap delete: [
+                "~/.IntelliJIdea#{version.major}",
+                "~/Library/Caches/IntelliJIdea#{version.major}",
+                "~/Library/Logs/IntelliJIdea#{version.major}",
+                "~/Library/Application Support/IntelliJIdea#{version.major}",
+                "~/Library/Preferences/IntelliJIdea#{version.major}",
+                '~/Library/Preferences/com.jetbrains.intellij.plist',
+              ]
 end
